@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Library Project</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head> 
+  <body>
+    <div id="form__modal">
+      <div id="form">
+        <h1 id="form__title">New Book:</h1>
+        <div id="new__book">
+          <div class="form__question form__question--container">
+            <h3 class="form__question title-question">Book</h3>
+            <input type="string" placeholder="title" id="titleName" class="form__question form__question--input">
+          </div>
+          <div class="form__question form__question--container">
+            <h3 class="form__question author-question">Author </h3>
+            <input type="string" placeholder="name" id="authorName" class="form__question form__question--input">
+          </div>
+          <div class="form__question form__question--container">
+            <h3 class="form__question pages-question">Pages</h3>
+            <input type="string" placeholder="amount" id="pageAmount" class="form__question form__question--input">
+          </div>
+          <div class="form__question form__question--container">
+            <h3 class="form__question pages-question">Read</h3>
+            <input type="checkbox" id="read" class="form__question form__button form__question--input">
+          </div>
+          <div class="form__question form__question--container" id="rating-question">
+            <h3 class="form__question pages-question">Rating</h3>
+            <input type="number" value="5" id="rating" class="form__question form__question--input">
+          </div>
+        </div>
+        <div id="submit--buttons">
+          <input type="submit" value="Submit book" class="form__button" id="addBook">
+          <input type="submit" value="Cancel" class="form__button" id="cancelBook"> 
+        </div>
+      </div>
+    </div>
+
+    <h1 id="page__title">My Bookshelf</h1>
+    <input type="submit" value="New book" class="form__button" id="newBook">
+    <div id="settings">      
+      <p class="settings__buttons" id="settings__display">Display as
+        <select id="displayList" name="display">
+          <option value="table">Table</option>
+          <option value="books">Books</option>
+        </select>
+      </p>
+      <p class="settings__buttons" id="settings__sort">Sort by
+        <select id="sortList" name="sort">
+          <option value="title">Title</option>
+          <option value="author">Author</option>
+          <option value="pages">Pages</option>
+          <option value="read">Read</option>
+          <option value="rating">Rating</option>
+        </select>
+      </p>
+    </div>
+
+    <div id="bookshelf">
+      <div id="table__header">
+        <div class="table__header--cell">Book</div>
+        <div class="table__header--cell">Author</div>
+        <div class="table__header--cell">Pages</div>
+        <div class="table__header--cell">Read</div>
+        <div class="table__header--cell">Rating</div>
+      </div>
+      <div id="table__body">
+        <div class="table__body--row">
+          <div class="table__body--row--cell">Cell 1-1</div>
+          <div class="table__body--row--cell">Cell 1-2</div>
+          <div class="table__body--row--cell">Cell 1-3</div>
+          <div class="table__body--row--cell">Cell 1-4</div>
+          <div class="table__body--row--cell">Cell 1-5</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
