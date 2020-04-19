@@ -73,10 +73,10 @@ body {
   margin-bottom: 10px;
 }
 
-#bookshelf {
+#bookshelf-table {
   display: table;
   text-align: center;
-  width: 80%;
+  width: 80vw;
   margin: 50px auto;
   background-color: lightgray;
 }
@@ -96,23 +96,45 @@ body {
   margin: 0 1vw;
 }
 
-#table__header {
+.bookshelf__header {
   display: table-header-group;
+  height: 
 }
 
-.table__header--cell {
+.bookshelf__header-cell {
   display: table-cell;
   border-bottom: 1px solid grey;
 }
 
-#table__body {
+.bookshelf__body {
   display: table-row-group;
 }
 
-.table__body--row {
+.bookshelf__body--row {
   display: table-row;
 }
 
-.table__body--row--cell {
+.bookshelf__body--row-cell {
   display: table-cell;
+  vertical-align: middle;
+}
+
+.bookshelf__title-cell {
+  width: 45%;
+}
+
+.bookshelf__author-cell {
+  width: 25%;
+}
+
+.bookshelf__page-count-cell {
+  width: 10%;
+}
+
+.bookshelf__read-cell {
+  width: 10%;
+}
+
+.bookshelf__rating-cell {
+  width: 10%;
 }
