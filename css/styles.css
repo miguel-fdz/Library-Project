@@ -14,7 +14,7 @@ body {
   height: 100%;
 }
 
-#form__modal {
+.form__modal {
   display: none;
   z-index: 1;
   position: fixed;
@@ -22,7 +22,7 @@ body {
   height: 100%;
   overflow: auto; /* Enable scroll if needed */
   backdrop-filter: blur(5px);
-  animation: fadeIn 1s; 
+  animation: fadeIn 1s;
 }
 
 @keyframes fadeIn {
@@ -30,7 +30,7 @@ body {
   to {backdrop-filter: blur(5px)}
 }
 
-#form {
+.form {
   background-color: lightgrey;
   position: absolute;
   top: 20%;
@@ -40,23 +40,23 @@ body {
   border: 5px solid darkslategrey;
 }
 
-#form__title {
+.form__title {
   padding: 20px;
 }
 
-#new__book {
+.new__book {
   background-color: white;
   height: 250px;
   width: 165px;
   display: inline-block;
 }
 
-#submit--buttons {
+.submit--buttons {
   padding: 15px;
   display: block;
 }
 
-#page__title {
+.page__title {
   padding-top: 40px;
   padding-bottom: 20px;
   color: white;
@@ -65,12 +65,8 @@ body {
 .form__question {
   display: block;
   text-align: center;
-  padding-top: 3px;
-}
-
-.form__question--container {
-  margin-right: 30px;
-  margin-left: 30px;
+  padding: 0.5vw 0 0;
+  margin: 0 1vw;
 }
 
 #newBook {
@@ -89,18 +85,15 @@ body {
   display: none;
 }
 
-#settings {
-  width: 20%;
-  left: 40%;
-  position: relative;
+.settings {
+  display: flex;
+  justify-content: center;
+  color: white;
 }
 
-#settings__display {
-  float: left;
-}
-.settings__buttons {
-  /* display: inline-block; */
-  color: white;
+.settings__choice {
+  display: flex;
+  margin: 0 1vw;
 }
 
 #table__header {
