@@ -3,7 +3,7 @@
 }
 
 html {
-  /* font-family: 'Inria Sans', sans-serif; */
+  font-family: 'Inria Sans', sans-serif;
   height: 100%;
   background-image: url("../images/library-photo2.png");
 }
@@ -22,7 +22,7 @@ body {
   height: 100%;
   overflow: auto; /* Enable scroll if needed */
   backdrop-filter: blur(5px);
-  animation: fadeIn 2s; 
+  animation: fadeIn 1s; 
 }
 
 @keyframes fadeIn {
