@@ -10,13 +10,6 @@ const librarySettings = {
   sort: "title",
 }
 
-/* Saves index of each book withing corresponding object. */
-const setIndex = () => {
-  for (let i = 0; i < myLibrary.length; i++) {
-    myLibrary[i].index = i;
-  }
-}
-
 /* Adds functionality for all books in library */
 document.querySelectorAll(".form__button").forEach(button => {
   button.addEventListener("click", (e) => {
@@ -32,32 +25,21 @@ const buttonFunctionalities = {
   "newBook": () => document.querySelector(".form__modal").style.display = "block",
   "addBook": () => {
     myLibrary.push(new Book());
-    setIndex();
-    removeBooks();
-    myLibrary.forEach(book => render(book, librarySettings.display));
+    render(myLibrary[myLibrary.length - 1]);
     buttonFunctionalities.cancelForm();
   },
   "cancelForm": () => {
     document.querySelector(".form__modal").style.display = "none";
     document.querySelectorAll(".form__question--input").forEach(e => e.value = "");
   },
-  "editBook": () => {
-    const index = findIndex(event.srcElement.parentNode); 
-    console.log(index);
+  "toggleRead": () => {
+    alert("this works!");
   },
-  "removeBook": () => {
-    const index = findIndex(event.srcElement.parentNode); 
-    myLibrary.splice(index, 1);
-    setIndex();
+  "remove__button": (e) => {
+    myLibrary.splice(e, 1);
     removeBooks();
-    myLibrary.forEach(book => render(book, librarySettings.display))
+    myLibrary.forEach(book => render(book));
   },
-}
-
-/* Finds index of type node within parent */
-const findIndex = (child) => {
-  const parent = child.parentNode; 
-  return Array.prototype.indexOf.call(parent.children, child);
 }
 
  /* Resets table for re-rendering books*/
@@ -76,7 +58,7 @@ class Book {
     this.author = bookValue("authorName");
     this.pages = `${bookValue("pageCount")} pages`;
     this.read = document.getElementById("readStatus").checked;
-    this.rating = bookValue("rating");
+    // this.rating = bookValue("rating");
     this.toggleRead = () => {};
     this.changeRating = () => {};
     this.deleteBook = () => {};
@@ -92,32 +74,32 @@ document.getElementById("displayList").addEventListener("change", (e) => {
   librarySettings.display = e.target.value;
 })
 
+const clickEvent = (e) => ["remove__button", "read__button"].filter(button => (e !== undefined && e.contains(`${button}`)))[0]
+
+document.addEventListener("click", (e) => {
+  if (clickEvent(e.target.classList)) {
+    buttonFunctionalities[clickEvent(e.target.classList)](e.target.dataset.type);
+  }
+})
+
 /* Renders one book according to display selection. */
 const render = (book) => {
   if (librarySettings.display === "table") {
     const container = document.getElementById("body");
-    const createRow = document.createElement("div");
-    createRow.classList.add("library__body--row");
-    const element = [book.title, book.author, book.pages, book.read, book.rating, "edit", "remove"];
-    for (let i = 0; i < 5; i++) {
-      const Cell = document.createElement("div");
-      Cell.classList.add("library__body--row-cell");
-      Cell.innerHTML = element[i];
-      createRow.appendChild(Cell);
-    }
-    for (let i = 5; i < 7; i++) {
-      const Button = document.createElement("button");
-      Button.classList.add("form__button");
-      Button.setAttribute("id", `${element[i]}Book`),
-      Button.innerHTML = element[i];
-      Button.addEventListener("click", () => buttonFunctionalities[Button.id]());
-      createRow.appendChild(Button);
-    }
-    container.appendChild(createRow);
+    const newRow = document.createElement("div");
+    newRow.classList.add("library__body--row");
+    newRow.innerHTML = 
+    `<div class="library__body--row-cell">${book.title}</div>
+    <div class="library__body--row-cell">${book.author}</div>
+    <div class="library__body--row-cell">${book.pages}</div>
+    <button class="library__body--row-cell read__button" id="toggleRead">${book.read}</button>
+    <div class="library__body--row-cell">${book.rating}</div>
+    <button class="remove__button" id="removeBook" data-type="${myLibrary.indexOf(book)}">remove</button>`;
+    container.appendChild(newRow);
   }
   else {
-    alert("this doesn't work yet!");
+    console.log("this doesn't work yet!");
   } 
 }
 
-myLibrary.forEach(book => render(book, librarySettings.display))
+myLibrary.forEach(book => render(book));

@@ -29,7 +29,9 @@
           </div>
           <div class="form__question rating-question" id="ratingInput">
             <h3 class="question">Rating</h3>
-            <input type="number" value="5" id="rating" class="form__question--input">
+            <div class="rating">
+              <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+            </div>
           </div>
         <div class="submit--buttons">
           <button class="form__button" id="addBook"> Submit book</button>
@@ -69,20 +71,21 @@
         <div class="library__header-cell library__rating-cell">Rating</div>
       </div>
       <div class="library__body" id="body">
-        <!-- <div class="library__body--row">
-          <div class="library__body--row-cell">Zen and the Art of Motorcycle Maintenance: An Inquiry into Values</div>
-          <div class="library__body--row-cell">Robert M. Persig</div>
-          <div class="library__body--row-cell">418</div>
-          <div class="library__body--row-cell">Read</div>
-          <div class="library__body--row-cell">*****</div>
-          <button class="form__button" id="editBook">edit</button>
-          <button class="form__button" id="removeBook">remove</button>
-        </div> -->
-
       </div>
     </div>
 
     <div class="library-grid">
+      <div class="library__shelf-space">
+        <div class="library__cover">
+          <div class="library__cover--text">
+            <p class="title"></p>
+            <p class="author"></p>
+            <p class="pagecount"></p>
+            <p class="read"></p>
+            <p class="rating"></p>
+          </div>
+        </div>
+      </div>
       <div class="library__shelf-space">
         <div class="library__cover">
           <div class="library__cover--text">

@@ -37,6 +37,21 @@ body {
   border: 5px solid darkslategrey;
 }
 
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute;
+}
+
 .form__title {
   padding: 20px;
 }
@@ -86,11 +101,11 @@ body {
   text-align: center;
   width: 80vw;
   margin: 50px auto;
-  background-color: lightgray;
 }
 
 .library__header {
   display: table-header-group;
+  background-color: lightgray;
 }
 
 .library__header-cell {
@@ -104,6 +119,7 @@ body {
 
 .library__body--row {
   display: table-row;
+  background-color: lightgray;
 }
 
 .library__body--row-cell {
@@ -134,9 +150,9 @@ body {
 .library-grid {
   width: 90vw;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 300px);
-  grid-template-rows: repeat(auto-fill, 400px);
-  grid-row-gap: 150px;
+  grid-template-columns: repeat(auto-fill, 250px);
+  grid-template-rows: repeat(auto-fill, 300px);
+  grid-row-gap: 50px;
 }
 
 .library__shelf-space {
@@ -148,7 +164,7 @@ body {
 }
 
 .library__cover {
-  width: 65%;
+  width: 70%;
   height: 85%;
   background-color: rgb(175, 0, 0);
 }
