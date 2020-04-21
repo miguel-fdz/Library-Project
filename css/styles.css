@@ -1,17 +1,14 @@
 * {
   margin: 0;
-}
-
-html {
   font-family: 'Inria Sans', sans-serif;
-  height: 100%;
-  background-image: url("../images/library-photo2.png");
 }
 
 body {
-  text-align: center;
-  background-color: rgb(0,0,0,0.4);
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: url("../images/library-photo3.png");
 }
 
 .form__modal {
@@ -33,22 +30,15 @@ body {
 .form {
   background-color: lightgrey;
   position: absolute;
-  top: 20%;
-  left: 30%;
-  height: 50%;
-  width: 40%;
+  top: 25%;
+  left: 32.5%;
+  height: 35%;
+  width: 35%;
   border: 5px solid darkslategrey;
 }
 
 .form__title {
   padding: 20px;
-}
-
-.new__book {
-  background-color: white;
-  height: 250px;
-  width: 165px;
-  display: inline-block;
 }
 
 .submit--buttons {
@@ -63,7 +53,6 @@ body {
 }
 
 .form__question {
-  display: block;
   text-align: center;
   padding: 0.5vw 0 0;
   margin: 0 1vw;
@@ -73,15 +62,11 @@ body {
   margin-bottom: 10px;
 }
 
-#bookshelf-table {
-  display: table;
-  text-align: center;
-  width: 80vw;
-  margin: 50px auto;
-  background-color: lightgray;
+.question {
+  float: left;
 }
 
-#rating-question {
+.rating-question {
   display: none;
 }
 
@@ -96,45 +81,74 @@ body {
   margin: 0 1vw;
 }
 
-.bookshelf__header {
-  display: table-header-group;
-  height: 
+.library-table {
+  display: table;
+  text-align: center;
+  width: 80vw;
+  margin: 50px auto;
+  background-color: lightgray;
 }
 
-.bookshelf__header-cell {
+.library__header {
+  display: table-header-group;
+}
+
+.library__header-cell {
   display: table-cell;
   border-bottom: 1px solid grey;
 }
 
-.bookshelf__body {
+.library__body {
   display: table-row-group;
 }
 
-.bookshelf__body--row {
+.library__body--row {
   display: table-row;
 }
 
-.bookshelf__body--row-cell {
+.library__body--row-cell {
   display: table-cell;
   vertical-align: middle;
 }
 
-.bookshelf__title-cell {
+.library__title-cell {
   width: 45%;
 }
 
-.bookshelf__author-cell {
+.library__author-cell {
   width: 25%;
 }
 
-.bookshelf__page-count-cell {
+.library__page-count-cell {
   width: 10%;
 }
 
-.bookshelf__read-cell {
+.library__read-cell {
   width: 10%;
 }
 
-.bookshelf__rating-cell {
+.library__rating-cell {
   width: 10%;
+}
+
+.library-grid {
+  width: 90vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-template-rows: repeat(auto-fill, 400px);
+  grid-row-gap: 150px;
+}
+
+.library__shelf-space {
+  grid-column: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.library__cover {
+  width: 65%;
+  height: 85%;
+  background-color: rgb(175, 0, 0);
 }

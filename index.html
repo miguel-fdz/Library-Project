@@ -11,43 +11,41 @@
     <div class="form__modal">
       <div class="form">
         <h1 class="form__title">New Book:</h1>
-        <div class="new__book">
           <div class="form__question">
-          	<h3 class="title-question">Book</h3>
+          	<h3 class="question">Book</h3>
             <input type="string" placeholder="title" id="titleName" class="form__question--input">
           </div>
           <div class="form__question">
-            <h3 class="author-question">Author </h3>
+            <h3 class="question">Author </h3>
             <input type="string" placeholder="name" id="authorName" class="form__question--input">
           </div>
           <div class="form__question">
-            <h3 class="pages-question">Pages</h3>
+            <h3 class="question">Pages</h3>
             <input type="string" placeholder="amount" id="pageCount" class="form__question--input">
           </div>
           <div class="form__question">
-            <h3 class="pages-question">Read</h3>
+            <h3 class="question">Read</h3>
             <input type="checkbox" id="readStatus" class="form__button">
           </div>
-          <div class="form__question" id="rating-question">
-            <h3 class="pages-question">Rating</h3>
+          <div class="form__question rating-question" id="ratingInput">
+            <h3 class="question">Rating</h3>
             <input type="number" value="5" id="rating" class="form__question--input">
           </div>
-        </div>
         <div class="submit--buttons">
-          <input type="submit" value="Submit book" class="form__button" id="addBook">
-          <input type="submit" value="Cancel" class="form__button" id="cancelForm"> 
+          <button class="form__button" id="addBook"> Submit book</button>
+          <button class="form__button" id="cancelForm">Cancel</button>
         </div>
       </div>
     </div>
 
     <h1 class="page__title">My Bookshelf</h1>
-    <input type="submit" value="New book" class="form__button" id="newBook">
+    <button class="form__button" id="newBook">New book</button>
     <div class="settings">      
       <div class="settings__choice settings__display">
         <p>Display as </p>
         <select id="displayList" name="display">
           <option value="table">Table</option>
-          <option value="books">Books</option>
+          <option value="books">Grid</option>
         </select>
       </div>
       <div class="settings__choice settings__sort">
@@ -62,26 +60,63 @@
       </div>
     </div>
 
-    <div id="bookshelf-table">
-      <div class="bookshelf__header">
-        <div class="bookshelf__header-cell bookshelf__title-cell">Book</div>
-        <div class="bookshelf__header-cell bookshelf__author-cell">Author</div>
-        <div class="bookshelf__header-cell bookshelf__page-count-cell">Pages</div>
-        <div class="bookshelf__header-cell bookshelf__read-cell">Read</div>
-        <div class="bookshelf__header-cell bookshelf__rating-cell">Rating</div>
+    <div class="library-table" id="library-table">
+      <div class="library__header">
+        <div class="library__header-cell library__title-cell">Book</div>
+        <div class="library__header-cell library__author-cell">Author</div>
+        <div class="library__header-cell library__page-count-cell">Pages</div>
+        <div class="library__header-cell library__read-cell">Read</div>
+        <div class="library__header-cell library__rating-cell">Rating</div>
       </div>
-      <div class="bookshelf__body">
-        <div class="bookshelf__body--row">
-          <div class="bookshelf__body--row-cell">Zen and the Art of Motorcycle Maintenance: An Inquiry into Values</div>
-          <div class="bookshelf__body--row-cell">Robert M. Persig</div>
-          <div class="bookshelf__body--row-cell">418</div>
-          <div class="bookshelf__body--row-cell">Read</div>
-          <div class="bookshelf__body--row-cell">*****</div>
-        </div>
+      <div class="library__body" id="body">
+        <!-- <div class="library__body--row">
+          <div class="library__body--row-cell">Zen and the Art of Motorcycle Maintenance: An Inquiry into Values</div>
+          <div class="library__body--row-cell">Robert M. Persig</div>
+          <div class="library__body--row-cell">418</div>
+          <div class="library__body--row-cell">Read</div>
+          <div class="library__body--row-cell">*****</div>
+          <button class="form__button" id="editBook">edit</button>
+          <button class="form__button" id="removeBook">remove</button>
+        </div> -->
+
       </div>
     </div>
 
+    <div class="library-grid">
+      <div class="library__shelf-space">
+        <div class="library__cover">
+          <div class="library__cover--text">
+            <p class="title"></p>
+            <p class="author"></p>
+            <p class="pagecount"></p>
+            <p class="read"></p>
+            <p class="rating"></p>
+          </div>
+        </div>
+      </div>
+      <div class="library__shelf-space">
+        <div class="library__cover">
+          <div class="library__cover--text">
+            <p class="title"></p>
+            <p class="author"></p>
+            <p class="pagecount"></p>
+            <p class="read"></p>
+            <p class="rating"></p>
+          </div>
+        </div>
+      </div>
+      <div class="library__shelf-space">
+        <div class="library__cover">
+          <div class="library__cover--text">
+            <p class="title"></p>
+            <p class="author"></p>
+            <p class="pagecount"></p>
+            <p class="read"></p>
+            <p class="rating"></p>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="js/scripts.js"></script>
   </body>
 </html>
-
