@@ -1,14 +1,32 @@
 const myLibrary = [{
-  title: "the hobbit",
-  author: "tolkein",
-  pages: "123 pages",
+  title: "the Hobbit",
+  author: "Tolkein",
+  pages: 300,
   read: true,
-  rating: "***",
-}];
-const librarySettings = {
-  display: "table",
-  sort: "title",
-}
+  rating: 3,
+},
+{
+  title: "Neuromancer",
+  author: "William Gibson",
+  pages: 271,
+  read: true,
+  rating: 4,
+},
+{
+  title: "Leviathan Wakes",
+  author: "James SA Corey",
+  pages: 577,
+  read: false,
+  rating: 3,
+},
+{
+  title: "The Charisma Myth",
+  author: "Olivia Fox",
+  pages: 150,
+  read: false,
+  rating: 5,
+},
+];
 
 /* Adds functionality for all books in library */
 document.querySelectorAll(".form__button").forEach(button => {
@@ -32,11 +50,13 @@ const buttonFunctionalities = {
     document.querySelector(".form__modal").style.display = "none";
     document.querySelectorAll(".form__question--input").forEach(e => e.value = "");
   },
-  "toggleRead": () => {
-    alert("this works!");
+  "read__button": (i) => {
+    (myLibrary[i].read === true) ? myLibrary[i].read = false : myLibrary[i].read = true;
+    removeBooks();
+    myLibrary.forEach(book => render(book));
   },
-  "remove__button": (e) => {
-    myLibrary.splice(e, 1);
+  "remove__button": (i) => {
+    myLibrary.splice(i, 1);
     removeBooks();
     myLibrary.forEach(book => render(book));
   },
@@ -50,22 +70,40 @@ const removeBooks = () => {
   }
 }
 
-const bookValue = x => document.getElementById(`${x}`).value;
+const isChecked = (x) => x.checked === "true";
 
-class Book {
-  constructor() {
-    this.title = bookValue("titleName");
-    this.author = bookValue("authorName");
-    this.pages = `${bookValue("pageCount")} pages`;
-    this.read = document.getElementById("readStatus").checked;
-    // this.rating = bookValue("rating");
-    this.toggleRead = () => {};
-    this.changeRating = () => {};
-    this.deleteBook = () => {};
+const bookValue = x => {
+  if (x === "starRating") {
+    const ele = document.getElementsByName("rating");
+    for (i = 0; i < ele.length; i++) { 
+      if (ele[i].checked) {
+        return ele[i].value;
+      }
+    }
+  } else {
+    return document.getElementById(`${x}`).value;
   }
 }
 
-/* Adds display change functionality */
+class Book {
+  constructor() {
+    this.title = bookValue("titleName").capitalize();
+    this.author = bookValue("authorName");
+    this.pages = Number(bookValue("pageCount"));
+    this.read = document.getElementById("readStatus").checked;
+    this.rating = Number(bookValue("starRating"));
+  }
+}
+
+/* On sort selection switch, sorts myLibrary and re-renders books */
+document.getElementById("sortList").addEventListener("change", (e) => {
+  const compare = type => (a,b) => (a[type] > b[type]) ? 1 : (b[type] > a[type]) ? -1 : 0;
+  myLibrary.sort(compare(e.target.value));
+  removeBooks();
+  myLibrary.forEach(book => render(book));
+})
+
+/* Switches display type */
 document.getElementById("displayList").addEventListener("change", (e) => {
   const currentDisplayType = document.getElementById(`library-${librarySettings.display}`)
   currentDisplayType.style.display = "none";
@@ -84,22 +122,17 @@ document.addEventListener("click", (e) => {
 
 /* Renders one book according to display selection. */
 const render = (book) => {
-  if (librarySettings.display === "table") {
-    const container = document.getElementById("body");
-    const newRow = document.createElement("div");
-    newRow.classList.add("library__body--row");
-    newRow.innerHTML = 
-    `<div class="library__body--row-cell">${book.title}</div>
-    <div class="library__body--row-cell">${book.author}</div>
-    <div class="library__body--row-cell">${book.pages}</div>
-    <button class="library__body--row-cell read__button" id="toggleRead">${book.read}</button>
-    <div class="library__body--row-cell">${book.rating}</div>
-    <button class="remove__button" id="removeBook" data-type="${myLibrary.indexOf(book)}">remove</button>`;
-    container.appendChild(newRow);
-  }
-  else {
-    console.log("this doesn't work yet!");
-  } 
+  const container = document.getElementById("body");
+  const newRow = document.createElement("div");
+  newRow.classList.add("library__body--row");
+  newRow.innerHTML = 
+  `<div class="library__body--row-cell">${book.title}</div>
+  <div class="library__body--row-cell">${book.author}</div>
+  <div class="library__body--row-cell">${book.pages} pages</div>
+  <button class="library__body--row-cell read__button" data-type="${myLibrary.indexOf(book)}">${book.read}</button>
+  <div class="library__body--row-cell">${book.rating}</div>
+  <button class="remove__button" data-type="${myLibrary.indexOf(book)}">remove</button>`;
+  container.appendChild(newRow);
 }
 
 myLibrary.forEach(book => render(book));
