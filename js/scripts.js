@@ -87,11 +87,12 @@ const bookValue = x => {
 
 class Book {
   constructor() {
-    this.title = bookValue("titleName").capitalize();
+    this.title = bookValue("titleName");
     this.author = bookValue("authorName");
     this.pages = Number(bookValue("pageCount"));
     this.read = document.getElementById("readStatus").checked;
     this.rating = Number(bookValue("starRating"));
+    this.isbn = bookValue("isbn");
   }
 }
 
@@ -132,7 +133,7 @@ const render = (book) => {
   <div class="library__body--row-cell">${book.rating}</div>
   <button class="remove__button" data-type="${myLibrary.indexOf(book)}">remove</button>`;
   tableContainer.appendChild(tableNewRow);
-  /*const gridContainer = document.getElementById("grid");
+  const gridContainer = document.getElementById("grid");
   const gridNewRow = document.createElement("div");
   gridNewRow.classList.add("library-grid__row");
   if (book.isbn){
@@ -144,7 +145,7 @@ const render = (book) => {
   <button class="library-grid__row-cell read__button" data-type="${myLibrary.indexOf(book)}">${book.read}</button>
   <div class="library-grid__row-cell">${book.rating}</div>
   <button class="remove__button" data-type="${myLibrary.indexOf(book)}">remove</button>`;
-  container.appendChild(gridNewRow);*/
+  gridContainer.appendChild(gridNewRow);
 }
 
 myLibrary.forEach(book => render(book));
