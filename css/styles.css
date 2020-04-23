@@ -10,7 +10,7 @@ body {
   align-items: center;
   background-image: url("../images/library-photo3.png");
 }
-  
+
 .form__modal {
   display: none;
   z-index: 1;
@@ -20,11 +20,6 @@ body {
   overflow: auto; /* Enable scroll if needed */
   backdrop-filter: blur(5px);
   animation: fadeIn 1s;
-}
-
-@keyframes fadeIn {
-  from {backdrop-filter: blur(0px)}
-  to {backdrop-filter: blur(5px)}
 }
 
 .form {
@@ -69,7 +64,7 @@ body {
 
 .star__rating:not(old) > label:hover:before,
 .star__rating:not(old) > label:hover ~ label:before,
-.star__rating:not(:hover) > :checked ~ label:before {
+.star__rating:not(:hover) > :checked ~ label:before{
   opacity : 1;
 }
 
@@ -179,19 +174,18 @@ body {
   grid-template-columns: repeat(auto-fill, 250px);
   grid-template-rows: repeat(auto-fill, 300px);
   grid-row-gap: 50px;
-  justify-items: center;
-  align-items: end;
 }
 
-.library-grid__row {
+.library__shelf-space {
   grid-column: auto;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  width: 80%;
-  height: 275px;
-  background-color: black;
+  width: 100%;
 }
 
-.library-grid__row-cell {
+.library__cover {
+  width: 70%;
+  height: 225px;
+  background-color: rgb(175, 0, 0);
 }

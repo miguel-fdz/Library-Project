@@ -28,7 +28,7 @@ const myLibrary = [{
 },
 ];
 
-/* Adds functionality for all books in library */
+/* Adds functionality for all buttons in library */
 document.querySelectorAll(".form__button").forEach(button => {
   button.addEventListener("click", (e) => {
     buttonFunctionalities[e.target.id]();
@@ -64,7 +64,7 @@ const buttonFunctionalities = {
 
  /* Resets table for re-rendering books*/
 const removeBooks = () => {
-  const tableBody = document.getElementById("table");
+  const tableBody = document.getElementById("body");
   while (tableBody.firstChild) {
     tableBody.removeChild(tableBody.lastChild);
   }
@@ -123,10 +123,11 @@ document.addEventListener("click", (e) => {
 
 /* Renders one book according to display selection. */
 const render = (book) => {
-  const tableContainer = document.getElementById("table");
-  const tableNewRow = document.createElement("div");
-  tableNewRow.classList.add("library__body--row");
-  tableNewRow.innerHTML = `<div class="library__body--row-cell">${book.title}</div>
+  const container = document.getElementById("body");
+  const newRow = document.createElement("div");
+  newRow.classList.add("library__body--row");
+  newRow.innerHTML = 
+  `<div class="library__body--row-cell">${book.title}</div>
   <div class="library__body--row-cell">${book.author}</div>
   <div class="library__body--row-cell">${book.pages} pages</div>
   <button class="library__body--row-cell read__button" data-type="${myLibrary.indexOf(book)}">${book.read}</button>
