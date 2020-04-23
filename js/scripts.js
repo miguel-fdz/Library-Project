@@ -87,11 +87,12 @@ const bookValue = x => {
 
 class Book {
   constructor() {
-    this.title = bookValue("titleName").capitalize();
+    this.title = bookValue("titleName");
     this.author = bookValue("authorName");
     this.pages = Number(bookValue("pageCount"));
     this.read = document.getElementById("readStatus").checked;
     this.rating = Number(bookValue("starRating"));
+    this.isbn = bookValue("isbn");
   }
 }
 
@@ -132,7 +133,24 @@ const render = (book) => {
   <button class="library__body--row-cell read__button" data-type="${myLibrary.indexOf(book)}">${book.read}</button>
   <div class="library__body--row-cell">${'<img src="images/star-on.svg" class="star__rated">'.repeat(book.rating)}</div>
   <button class="remove__button" data-type="${myLibrary.indexOf(book)}">remove</button>`;
+<<<<<<< HEAD
   container.appendChild(newRow);
+=======
+  tableContainer.appendChild(tableNewRow);
+  const gridContainer = document.getElementById("grid");
+  const gridNewRow = document.createElement("div");
+  gridNewRow.classList.add("library-grid__row");
+  if (book.isbn){
+    gridNewRow.style.backgroundImage = `url("http://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg})`
+  }
+  gridNewRow.innerHTML = `<div class="library-grid__row-cell">${book.title}</div>
+  <div class="library-grid__row-cell">${book.author}</div>
+  <div class="library-grid__row-cell">${book.pages} pages</div>
+  <button class="library-grid__row-cell read__button" data-type="${myLibrary.indexOf(book)}">${book.read}</button>
+  <div class="library-grid__row-cell">${book.rating}</div>
+  <button class="remove__button" data-type="${myLibrary.indexOf(book)}">remove</button>`;
+  gridContainer.appendChild(gridNewRow);
+>>>>>>> 10ec4bd8d91509a1772cb7ed2c4351e1ac38122d
 }
 
 myLibrary.forEach(book => render(book));
