@@ -11,7 +11,7 @@ body {
   background-image: url("../images/library-photo3.png");
 }
 
-.form__modal {
+form {
   display: none;
   z-index: 1;
   position: fixed;
@@ -22,7 +22,7 @@ body {
   animation: fadeIn 1s;
 }
 
-.form {
+fieldset {
   background-color: lightgrey;
   position: absolute;
   top: 25%;
@@ -30,6 +30,16 @@ body {
   height: 35%;
   width: 35%;
   border: 5px solid darkslategrey;
+}
+
+.question > span {
+  font-size: 8pt;
+  font-weight: 400;
+}
+
+input:focus:invalid {
+  border: 2px dashed red;
+  outline: transparent;
 }
 
 .star__rating:not(old){
@@ -82,6 +92,10 @@ body {
   display: block;
 }
 
+.svg-button {
+  pointer-events: none;
+}
+
 .page__title {
   padding-top: 40px;
   padding-bottom: 20px;
@@ -117,7 +131,7 @@ body {
   margin: 0 1vw;
 }
 
-.library-table {
+.library-table__container {
   display: table;
   text-align: center;
   width: 80vw;
@@ -134,16 +148,16 @@ body {
   border-bottom: 1px solid grey;
 }
 
-.library__body {
+.library-table {
   display: table-row-group;
 }
 
-.library__body--row {
+.library-table__row {
   display: table-row;
   background-color: lightgray;
 }
 
-.library__body--row-cell {
+.library-table__row--cell {
   display: table-cell;
   vertical-align: middle;
 }
@@ -174,18 +188,20 @@ body {
   grid-template-columns: repeat(auto-fill, 250px);
   grid-template-rows: repeat(auto-fill, 300px);
   grid-row-gap: 50px;
+  justify-items: center;
+  align-items: flex-end;
 }
 
-.library__shelf-space {
+.library-grid__row {
   grid-column: auto;
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 70%;
+  background-color: rgb(175, 0, 0);
+  background-size: contain;
 }
 
-.library__cover {
-  width: 70%;
-  height: 225px;
-  background-color: rgb(175, 0, 0);
+.library-grid__row--cell {
+  
 }
