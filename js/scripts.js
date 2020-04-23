@@ -28,7 +28,7 @@ const myLibrary = [{
 },
 ];
 
-/* Adds functionality for all books in library */
+/* Adds functionality for all buttons in library */
 document.querySelectorAll(".form__button").forEach(button => {
   button.addEventListener("click", (e) => {
     buttonFunctionalities[e.target.id]();
@@ -64,7 +64,7 @@ const buttonFunctionalities = {
 
  /* Resets table for re-rendering books*/
 const removeBooks = () => {
-  const tableBody = document.getElementById("table");
+  const tableBody = document.getElementById("body");
   while (tableBody.firstChild) {
     tableBody.removeChild(tableBody.lastChild);
   }
@@ -122,44 +122,17 @@ document.addEventListener("click", (e) => {
 
 /* Renders one book according to display selection. */
 const render = (book) => {
-  const tableContainer = document.getElementById("table");
-  const tableNewRow = document.createElement("div");
-  tableNewRow.classList.add("library__body--row");
-  tableNewRow.innerHTML = `<div class="library__body--row-cell">${book.title}</div>
+  const container = document.getElementById("body");
+  const newRow = document.createElement("div");
+  newRow.classList.add("library__body--row");
+  newRow.innerHTML = 
+  `<div class="library__body--row-cell">${book.title}</div>
   <div class="library__body--row-cell">${book.author}</div>
   <div class="library__body--row-cell">${book.pages} pages</div>
   <button class="library__body--row-cell read__button" data-type="${myLibrary.indexOf(book)}">${book.read}</button>
-  <div class="library__body--row-cell">${book.rating}</div>
+  <div class="library__body--row-cell">${'<img src="images/star-on.svg" class="star__rated">'.repeat(book.rating)}</div>
   <button class="remove__button" data-type="${myLibrary.indexOf(book)}">remove</button>`;
-  tableContainer.appendChild(tableNewRow);
-  /*const gridContainer = document.getElementById("grid");
-  const gridNewRow = document.createElement("div");
-  gridNewRow.classList.add("library-grid__row");
-  if (book.isbn){
-    gridNewRow.style.backgroundImage = `url("http://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg})`
-  }
-  gridNewRow.innerHTML = `<div class="library-grid__row-cell">${book.title}</div>
-  <div class="library-grid__row-cell">${book.author}</div>
-  <div class="library-grid__row-cell">${book.pages} pages</div>
-  <button class="library-grid__row-cell read__button" data-type="${myLibrary.indexOf(book)}">${book.read}</button>
-  <div class="library-grid__row-cell">${book.rating}</div>
-  <button class="remove__button" data-type="${myLibrary.indexOf(book)}">remove</button>`;
-  container.appendChild(gridNewRow);*/
+  container.appendChild(newRow);
 }
 
 myLibrary.forEach(book => render(book));
-
-/*const domRender = (container, innerHTML) => {
-    const container = document.getElementById(`${container}`);
-    const newRow = document.createElement("div");
-    newRow.classList.add(`${innerHTML}--row`);
-    newRow.innerHTML = `<div class="${innerHTML}--row-cell">${book.title}</div>
-    <div class="${innerHTML}--row-cell">${book.author}</div>
-    <div class="${innerHTML}--row-cell">${book.pages} pages</div>
-    <button class="${innerHTML}--row-cell read__button" data-type="${myLibrary.indexOf(book)}">${book.read}</button>
-    <div class="${innerHTML}--row-cell">${book.rating}</div>
-    <button class="remove__button" data-type="${myLibrary.indexOf(book)}">remove</button>`;
-    container.appendChild(newRow);
-  }
-  domRender("table", 
-  domRender("grid", ``)*/
