@@ -130,7 +130,7 @@ const render = (book) => {
   <div class="library__body--row-cell">${book.author}</div>
   <div class="library__body--row-cell">${book.pages} pages</div>
   <button class="library__body--row-cell read__button" data-type="${myLibrary.indexOf(book)}">${book.read}</button>
-  <div class="library__body--row-cell">${book.rating}</div>
+  <div class="library__body--row-cell">${'<img src="images/star-on.svg" class="star__rated">'.repeat(book.rating)}</div>
   <button class="remove__button" data-type="${myLibrary.indexOf(book)}">remove</button>`;
   tableContainer.appendChild(tableNewRow);
   const gridContainer = document.getElementById("grid");
