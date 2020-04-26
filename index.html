@@ -88,17 +88,27 @@
     </div>
 
     <div class="library-grid" id="grid">
-      <img src="library-grid__row">
-        <div class="library-grid__row--cell">${book.title}</div>
-        <div class="library-grid__row--cell">${book.author}</div>
-        <div class="library-grid__row--cell">${book.pages} pages</div>
-        <button class="library-grid__row--cell read__button" data-type="${myLibrary.indexOf(book)}">${book.read}</button>
-        <div class="library-grid__row--cell">${book.rating}</div>
-        <button class="remove__button" data-type="${myLibrary.indexOf(book)}">remove</button>`;
-      </div>
     </div>
 
+    <div class="modal closed" id="modal">
+      <div class="modal__search">
+        <input class="modal__search-input" id="searchInput" placeholder="Search for a Title, Author or ISBN">
+        <button class="modal__search-button" id="searchButton"></button>
+      </div>
+      <button class="modal__close-button" id="closeModal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.96 25"><title>close-button 2</title><polygon points="24.96 2.44 22.56 0.04 12.5 10.1 2.4 0 0 2.4 10.1 12.5 0 22.59 2.4 25 12.5 14.9 22.56 24.96 24.96 22.56 14.9 12.5 24.96 2.44" style="fill:#B4B4B4"/></svg>
+      </button>
+      <div class="modal__search-results">
+        <ul class="search-results" id="search-results">
+          
+        </ul>
+      </div>
+    </div>
+    <div class="modal-overlay closed" id="modal-overlay">	
+    </div>
+
+    <script src="js/config.js"></script>
     <script src="js/scripts.js"></script>
-    <script src="https://ajax.googleapis.com/ajax"
+    <!-- <script src="https://ajax.googleapis.com/ajax"></script> -->
   </body>
 </html>
