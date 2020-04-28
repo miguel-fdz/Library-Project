@@ -46,6 +46,8 @@ input:focus:invalid {
   display        : inline-block;
   /* overflow       : auto; */
   vertical-align : bottom;
+  width          : 7.5em;
+  height         : 1.5em;
 }
 
 .star__rating:not(old) > input{
@@ -76,11 +78,6 @@ input:focus:invalid {
 .star__rating:not(old) > label:hover ~ label:before,
 .star__rating:not(:hover) > :checked ~ label:before{
   opacity : 1;
-}
-
-.star__rated {
-  height: 1.2em;
-  width: 1.2em;
 }
 
 .form__title {

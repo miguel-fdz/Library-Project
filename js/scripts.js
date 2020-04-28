@@ -104,28 +104,17 @@ document.addEventListener("click", (e) => {
   }
 })
 
-// const ratingStars = x => {
-//   let container = '';
-//   for (let i = 0; i < 5; i++) {
-//     if (i < x) {
-//       container += `${'<img src="images/star-on.svg" class="star__rated">'}`;
-//     } else {
-//       container += `${'<img src="images/star-off.svg" class="star__rated">'}`;
-//     }
-//   }
-//   return container;
-// };
-
-const starHTML = x => {
+/* Adds checked property to correct radio input of star rating in DOM */
+const starHTML = (x,y) => {
   const rating = Number(x);
   let html = '';
   for (i = 5; i > 0; i--) {
-    if (i !== x) {
-      html += `<input id="rating${i}" type="radio" name="rating" value="${i}">
-      <label for="rating${i}"></label>`;
+    if (i !== rating) {
+      html += `<input id="rating${i}.${y}" type="radio" name="rating${y}" value="${i}">
+      <label for="rating${i}.${y}"></label>`;
     } else {
-      html += `<input id="rating${i}" type="radio" name="rating" value="${i}" checked="checked">
-      <label for="rating${i}"></label>`;
+      html += `<input id="rating${i}.${y}" type="radio" name="rating${y}" value="${i}" checked="checked">
+      <label for="rating${i}.${y}m"></label>`;
     }
   }
   return html;
@@ -141,7 +130,7 @@ const render = (book) => {
   <div class="library-table__row--cell">${book.author}</div>
   <div class="library-table__row--cell">${book.pages} pages</div>
   <button class="library-table__row--cell read__button" data-type="${myLibrary.indexOf(book)}">${book.read}</button>
-  <div class="library-table__row--cell"><div class="star__rating" id="starRating">${starHTML(book.rating)}</div></div>
+  <div class="library-table__row--cell"><div class="star__rating" data-type="${myLibrary.indexOf(book)}">${starHTML(book.rating, myLibrary.indexOf(book))}</div></div>
   <button class="remove__button" data-type="${myLibrary.indexOf(book)}">remove</button>`;
   tableContainer.appendChild(tableRow);
   const gridContainer = document.getElementById("grid");
@@ -159,7 +148,13 @@ const render = (book) => {
   gridContainer.appendChild(gridRow);
 }
 
-myLibrary.forEach(book => render(book));
+document.addEventListener("change", (e) => {
+  if (e.target.parentNode.classList.contains("star__rating")) {
+    const x = e.target;
+    myLibrary[x.parentNode.dataset.type].rating = Number(x.value);
+    renderLibrary();
+  }
+})
 
 /*const domRender = (container, innerHTML) => {
     const container = document.getElementById(`${container}`);
@@ -211,16 +206,15 @@ document.addEventListener("click", (e) => {
 document.addEventListener("keyup", (e) => {
   if (modal.visible) {
     if (e.key === "Escape") {
-      modalReset()
+      modalReset();
     }
 
     if (e.key === "Enter") {
-      document.getElementById("modal").classList.toggle("search-mode")
-      bookSearch()
+      document.getElementById("modal").classList.toggle("search-mode");
+      bookSearch();
     }
   }
 })
-
 
 document.getElementById("searchButton").addEventListener("click", () => {
   document.getElementById("search-results").innerHTML = "";
@@ -236,42 +230,45 @@ const ifAuthorBlank = dataPath => !dataPath ? "" : dataPath.join(', ').replace(/
 
 function bookSearch() {
   const search = document.getElementById("searchInput").value;
-  const ul = document.getElementById("search-results")
+  const ul = document.getElementById("search-results");
   
   fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${config}`)
-    .then(response => response.json())
-    .then(data => {
-      data.items.map(book => {
-        let li = createNode("li"),
-          img = createNode("img"),
-          div = createNode("div"),
-          p = createNode("p");
-          div2 = createNode("div")
+  .then(response => response.json())
+  .then(data => {
+    data.items.map(book => {
+      let li = createNode("li"),
+        img = createNode("img"),
+        div = createNode("div"),
+        p = createNode("p");
+        div2 = createNode("div")
 
-        img.src = `${ifImageBlank(book.volumeInfo.imageLinks)}`;
-        p.innerHTML = `<span class="search-item__info--title">${ifTitleBlank(book.volumeInfo.title)}</span><br><span class="search-item__info--authors">${ifAuthorBlank(book.volumeInfo.authors)}</span>`;
-        div2.innerHTML = JSON.stringify({
-          "title": `${ifTitleBlank(book.volumeInfo.title)}`, 
-          "author": `${ifAuthorBlank(book.volumeInfo.authors)}`, 
-          "pages": `${ifTitleBlank(book.volumeInfo.pageCount)}`, 
-          "read": false, 
-          "rating": `${book.volumeInfo.averageRating}`, 
-          "image": `${ifImageBlank(book.volumeInfo.imageLinks)}`,
-        });
-        li.classList = "search-item";
-        img.classList = "search-item__image";
-        div.classList = "search-item__text-section"
-        p.classList = "search-item__info";
-        div2.classList = "hidden-volume-id";
-        li.addEventListener("click", (e) => {
-          myLibrary.push(JSON.parse(e.target.querySelector(".hidden-volume-id").innerHTML));
-          renderLibrary();
-        })
-        append(li, img);
-        append(div, p);
-        append(li, div);
-        append(li, div2);
-        append(ul, li);
+      img.src = `${ifImageBlank(book.volumeInfo.imageLinks)}`;
+      p.innerHTML = `<span class="search-item__info--title">${ifTitleBlank(book.volumeInfo.title)}</span><br><span class="search-item__info--authors">${ifAuthorBlank(book.volumeInfo.authors)}</span>`;
+      div2.innerHTML = JSON.stringify({
+        "title": `${ifTitleBlank(book.volumeInfo.title)}`, 
+        "author": `${ifAuthorBlank(book.volumeInfo.authors)}`, 
+        "pages": `${ifTitleBlank(book.volumeInfo.pageCount)}`, 
+        "read": false, 
+        "rating": `${book.volumeInfo.averageRating}`, 
+        "image": `${ifImageBlank(book.volumeInfo.imageLinks)}`,
+      });
+      li.classList = "search-item";
+      img.classList = "search-item__image";
+      div.classList = "search-item__text-section"
+      p.classList = "search-item__info";
+      div2.classList = "hidden-volume-id";
+      li.addEventListener("click", (e) => {
+        myLibrary.push(JSON.parse(e.target.querySelector(".hidden-volume-id").innerHTML));
+        renderLibrary();
       })
+      append(li, img);
+      append(div, p);
+      append(li, div);
+      append(li, div2);
+      append(ul, li);
     })
+  })
 }
+
+
+myLibrary.forEach(book => render(book));
