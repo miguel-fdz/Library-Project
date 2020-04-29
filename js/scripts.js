@@ -148,7 +148,6 @@ const render = (book) => {
   const gridRow = document.createElement("div");
   gridRow.classList.add("library-grid__row");
   if (book.isbn){
-    gridRow.style.backgroundImage = `url("http://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg")`
   }
   gridRow.innerHTML = `<div class="library-grid__row--cell">${book.title}</div>
   <div class="library-grid__row--cell">${book.author}</div>
