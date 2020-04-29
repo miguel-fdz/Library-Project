@@ -77,7 +77,7 @@ document.getElementById("sortList").addEventListener("change", (e) => {
   renderLibrary();
 })
 
-/* Switches display type */
+/* Switches display type between grid and table*/
 document.getElementById("displayList").addEventListener("change", (e) => {
   const currentDisplayType = document.getElementById(`library-${librarySettings.display}`)
   currentDisplayType.style.display = "none";
@@ -97,7 +97,7 @@ document.addEventListener("click", (e) => {
   }
 })
 
-/* Adds checked property to correct radio input of star rating in DOM */
+/* Creates rating nodes with according checked property */
 const starHTML = (x,y) => {
   const rating = Number(x);
   let html = '';
@@ -113,9 +113,7 @@ const starHTML = (x,y) => {
   return html;
 };
 
- const readHTML = x => x === true ? "Read" : "Not read";
-
-/* Renders one book according to display selection. */
+/* Renders one book according in both table and grid forms. */
 const render = (book) => {
   const tableContainer = document.getElementById("table");
   const tableRow = document.createElement("div");
@@ -144,10 +142,10 @@ const render = (book) => {
         <div class="library-grid__row--back--authors">${book.authors}</div>
         <div class="library-grid__row--back--page-count">${book.pageCount}<br>pages</div>
         <div class="library-grid__row--back--read-button">
-          <label for="readCheckbox${myLibrary.indexOf(book)}" class="read-button-label${myLibrary.indexOf(book)}">Not<br>Read</label>
+          <label for="readCheckbox${myLibrary.indexOf(book)}" class="read-button label${myLibrary.indexOf(book)}">Not<br>Read</label>
           <input type="checkbox" id="readCheckbox${myLibrary.indexOf(book)}" class="hidden-checkbox">
         </div>
-        <div class="library-grid__row--back--average-rating">${book.averageRating}</div>
+        <div class="library-grid__row--back--rating">${book.averageRating}</div>
         <button class="library-grid__row--back--remove-button" id="remove__button${myLibrary.indexOf(book)}" data-type="${myLibrary.indexOf(book)}">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.96 25"><title>close-button 2</title><polygon points="24.96 2.44 22.56 0.04 12.5 10.1 2.4 0 0 2.4 10.1 12.5 0 22.59 2.4 25 12.5 14.9 22.56 24.96 24.96 22.56 14.9 12.5 24.96 2.44" style="fill:#FFFFFF"/></svg>
         </button>
@@ -155,7 +153,8 @@ const render = (book) => {
     </div>`;
   gridContainer.appendChild(gridRow);
 }
-/* Enables active modification of star ratings */
+
+/* Upon changing star rating of book, save new value into myLibrary, then re-render books */
 document.addEventListener("change", (e) => {
   if (e.target.parentNode.classList.contains("star__rating")) {
     const x = e.target;

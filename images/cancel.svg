@@ -7,41 +7,41 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="cancel.svg"
-   inkscape:version="1.0rc1 (09960d6, 2020-04-09)"
-   id="svg39"
+   width="9.4174232mm"
+   height="9.4174232mm"
+   viewBox="0 0 9.4174232 9.4174232"
    version="1.1"
-   viewBox="0 0 10 10"
-   height="10mm"
-   width="10mm">
+   id="svg39"
+   inkscape:version="1.0rc1 (09960d6, 2020-04-09)"
+   sodipodi:docname="cancel.svg">
   <defs
      id="defs33" />
   <sodipodi:namedview
-     fit-margin-bottom="0"
-     fit-margin-right="0"
-     fit-margin-left="0"
-     fit-margin-top="0"
-     inkscape:window-maximized="0"
-     inkscape:window-y="26"
-     inkscape:window-x="0"
-     inkscape:window-height="874"
-     inkscape:window-width="1440"
-     inkscape:snap-object-midpoints="true"
-     inkscape:snap-bbox="false"
-     inkscape:snap-global="true"
-     showgrid="false"
-     inkscape:document-rotation="0"
-     inkscape:current-layer="layer1"
-     inkscape:document-units="mm"
-     inkscape:cy="249.78919"
-     inkscape:cx="131.29285"
-     inkscape:zoom="0.62"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     borderopacity="1.0"
-     bordercolor="#666666"
+     id="base"
      pagecolor="#ffffff"
-     id="base" />
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="4.64"
+     inkscape:cx="1.2977735"
+     inkscape:cy="18.667719"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:snap-global="true"
+     inkscape:snap-bbox="false"
+     inkscape:snap-object-midpoints="true"
+     inkscape:window-width="1440"
+     inkscape:window-height="779"
+     inkscape:window-x="2"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata36">
     <rdf:RDF>
@@ -55,34 +55,36 @@
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-60.000002,-99.999995)"
-     id="layer1"
+     inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     inkscape:label="Layer 1">
+     id="layer1"
+     transform="translate(-83.214239,-104.85307)">
     <g
-       transform="matrix(0.10008175,-0.09926428,0.09926428,0.10008175,41.914105,100.57805)"
-       id="g68">
-      <rect
-         style="fill:#cccccc;stroke-width:0.264583"
-         id="rect41"
-         width="10"
-         height="90"
-         x="89.190186"
-         y="92.604172" />
-      <rect
-         y="132.60417"
-         x="49.190182"
-         height="10"
-         width="90"
-         id="rect41-8"
-         style="fill:#cccccc;stroke-width:0.264583" />
+       id="g541">
+      <g
+         id="g549">
+        <g
+           id="g553">
+          <rect
+             y="133.36116"
+             x="-15.432992"
+             height="12.68641"
+             width="1.4096011"
+             id="rect41"
+             style="fill:#cccccc;stroke-width:0.0372957"
+             transform="rotate(-44.765045)"
+             ry="0.70480055" />
+          <rect
+             style="fill:#cccccc;stroke-width:0.0372957"
+             id="rect41-8"
+             width="12.68641"
+             height="1.4096011"
+             x="-21.071398"
+             y="138.99956"
+             transform="rotate(-44.765045)"
+             ry="0.70480055" />
+        </g>
+      </g>
     </g>
-    <rect
-       y="113.08804"
-       x="103.27284"
-       height="1.7069893"
-       width="0.85349464"
-       id="rect58"
-       style="fill:#cccccc;stroke-width:0.264583" />
   </g>
 </svg>
