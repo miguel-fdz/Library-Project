@@ -8,53 +8,8 @@
     <link rel="stylesheet" href="css/styles.css">
   </head> 
   <body>
-    <form>
-      <fieldset>
-        <h1 class="form__title">New Book:</h1>
-        <div class="form__question">
-          <h3 class="question">Title <span>(required)</span></h3>
-          <input type="string" placeholder="title" id="titleName" class="form__question--input" required>
-        </div>
-        <div class="form__question">
-          <h3 class="question">Author <span>(required)</span></h3>
-          <input type="string" placeholder="name" id="authorName" class="form__question--input" required>
-        </div>
-        <div class="form__question">
-          <h3 class="question">Pages </h3>
-          <input type="number" placeholder="amount" id="pageCount" class="form__question--input">
-        </div>
-        <div class="form__question">
-          <h3 class="question">isbn</h3><!--(only necessary if you want cover view)-->
-          <input type="number" placeholder="to see cover" id="isbn" class="form__button">
-        </div>
-        <div class="form__question">
-          <h3 class="question">Read</h3>
-          <input type="checkbox" id="readStatus" class="form__button">
-        </div>
-        <div class="form__question rating-question" id="ratingInput">
-          <h3 class="question">Rating</h3>
-          <div class="star__rating" id="starRating">
-            <input id="rating5" type="radio" name="rating" value="5">
-            <label for="rating5"></label>
-            <input id="rating4" type="radio" name="rating" value="4">
-            <label for="rating4"></label>
-            <input id="rating3" type="radio" name="rating" value="3">
-            <label for="rating3"></label>
-            <input id="rating2" type="radio" name="rating" value="2">
-            <label for="rating2"></label>
-            <input id="rating1" type="radio" name="rating" value="1">
-            <label for="rating1"></label>
-          </div>
-        </div>
-        <div class="submit--buttons">
-          <button class="form__button" id="addBook" tabindex="0"><img class="svg-button" src="images/submit.svg">Submit book</button>
-          <button class="form__button" id="cancelForm" tabindex="0"><img class="svg-button" src="images/cancel.svg">Cancel</button>
-        </div>
-      </fieldset>
-    </form>
-
     <h1 class="page__title">My Bookshelf</h1>
-    <button class="form__button" id="newBook">New book</button>
+    <button class="new__book" id="newBook"></button>
     <div class="settings">      
       <div class="settings__choice settings__display">
         <p>Display as </p>
@@ -107,8 +62,30 @@
     <div class="modal-overlay closed" id="modal-overlay">	
     </div>
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyDGotxe8pp2sfLQvIwK_-owmyCtFIXcwaQ",
+        authDomain: "library-project-top.firebaseapp.com",
+        databaseURL: "https://library-project-top.firebaseio.com",
+        projectId: "library-project-top",
+        storageBucket: "library-project-top.appspot.com",
+        messagingSenderId: "481933733152",
+        appId: "1:481933733152:web:a44d97657a7bd98fc6fb45",
+        measurementId: "G-VQYSN0LB2P"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
     <script src="js/config.js"></script>
     <script src="js/scripts.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax"></script> -->
   </body>
 </html>
