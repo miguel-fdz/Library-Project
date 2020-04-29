@@ -84,7 +84,7 @@ document.getElementById("sortList").addEventListener("change", (e) => {
   renderLibrary();
 })
 
-/* Switches display type */
+/* Switches display type between grid and table*/
 document.getElementById("displayList").addEventListener("change", (e) => {
   const currentDisplayType = document.getElementById(`library-${librarySettings.display}`)
   currentDisplayType.style.display = "none";
@@ -104,7 +104,7 @@ document.addEventListener("click", (e) => {
   }
 })
 
-/* Adds checked property to correct radio input of star rating in DOM */
+/* Creates rating nodes with according checked property */
 const starHTML = (x,y) => {
   const rating = Number(x);
   let html = '';
@@ -120,7 +120,7 @@ const starHTML = (x,y) => {
   return html;
 };
 
-/* Renders one book according to display selection. */
+/* Renders one book according in both table and grid forms. */
 const render = (book) => {
   const tableContainer = document.getElementById("table");
   const tableRow = document.createElement("div");
@@ -148,6 +148,7 @@ const render = (book) => {
   gridContainer.appendChild(gridRow);
 }
 
+/* Upon changing star rating of book, save new value into myLibrary, then re-render books */
 document.addEventListener("change", (e) => {
   if (e.target.parentNode.classList.contains("star__rating")) {
     const x = e.target;
