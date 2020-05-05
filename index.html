@@ -6,20 +6,21 @@
     <meta charset="utf-8">
     <title>Library Project</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
   </head> 
   <body>
     <h1 class="page__title">My Bookshelf</h1>
     <button class="new__book" id="newBook"></button>
-    <div class="settings">      
+    <div class="settings">
       <div class="settings__choice settings__display">
-        <p>Display as </p>
+        <p>Display as</p>
         <select id="displayList" name="display">
           <option value="table">Table</option>
-          <option value="books">Grid</option>
+          <option value="grid">Grid</option>
         </select>
       </div>
       <div class="settings__choice settings__sort">
-        <p>Sort by </p>
+        <p>Sort by</p>
         <select id="sortList" name="sort">
           <option value="title">Title</option>
           <option value="author">Author</option>
@@ -30,7 +31,7 @@
       </div>
     </div>
 
-    <div class="library-table__container">
+    <div class="library-table__container visible-table" id="libraryTable">
       <div class="library__header">
         <div class="library__header-cell library__title-cell">Book</div>
         <div class="library__header-cell library__author-cell">Author</div>
@@ -38,14 +39,14 @@
         <div class="library__header-cell library__read-cell">Read</div>
         <div class="library__header-cell library__rating-cell">Rating</div>
       </div>
-      <div class="library-table" id="table">
+      <div class="library-table__body" id="tableBody">
       </div>
     </div>
 
-    <div class="library-grid" id="grid">
+    <div class="library-grid" id="libraryGrid">
     </div>
 
-    <div class="modal closed" id="modal">
+    <div class="modal search-bar hidden" id="modal">
       <div class="modal__search">
         <input class="modal__search-input" id="searchInput" placeholder="Search for a Title, Author or ISBN">
         <button class="modal__search-button" id="searchButton"></button>
@@ -59,8 +60,17 @@
         </ul>
       </div>
     </div>
-    <div class="modal-overlay closed" id="modal-overlay">	
+    <div class="modal login-signup hidden" id="loginSignup">
+      <h1>Welcome to My Awesome App</h1>
+      <div id="firebaseui-auth-container"></div>
+      <div id="loader">Loading...</div>
     </div>
+    <div class="modal-overlay hidden" id="modal-overlay">	
+    </div>
+
+    <ul id="list">
+      
+    </ul>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
@@ -68,23 +78,11 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
         https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
-
-    <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyDGotxe8pp2sfLQvIwK_-owmyCtFIXcwaQ",
-        authDomain: "library-project-top.firebaseapp.com",
-        databaseURL: "https://library-project-top.firebaseio.com",
-        projectId: "library-project-top",
-        storageBucket: "library-project-top.appspot.com",
-        messagingSenderId: "481933733152",
-        appId: "1:481933733152:web:a44d97657a7bd98fc6fb45",
-        measurementId: "G-VQYSN0LB2P"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-    </script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="js/app.js"></script>
     <script src="js/config.js"></script>
     <script src="js/scripts.js"></script>
   </body>
